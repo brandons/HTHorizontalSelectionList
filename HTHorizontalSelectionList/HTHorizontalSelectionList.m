@@ -22,10 +22,10 @@
 
 @end
 
-#define kHTHorizontalSelectionListHorizontalMargin 10
+#define kHTHorizontalSelectionListHorizontalMargin 20
 
-#define kHTHorizontalSelectionListSelectionIndicatorHeight 3
-#define kHTHorizontalSelectionListTrimHeight 0.5
+#define kHTHorizontalSelectionListSelectionIndicatorHeight 2
+#define kHTHorizontalSelectionListTrimHeight 1
 
 static NSString *LabelCellIdentifier = @"LabelCell";
 static NSString *ViewCellIdentifier = @"ViewCell";
@@ -238,7 +238,7 @@ static NSString *ViewCellIdentifier = @"ViewCell";
     [self layoutIfNeeded];
     [UIView animateWithDuration:animated ? 0.4 : 0.0
                           delay:0
-         usingSpringWithDamping:0.5
+         usingSpringWithDamping:0.85
           initialSpringVelocity:0
                         options:UIViewAnimationOptionCurveLinear
                      animations:^{
