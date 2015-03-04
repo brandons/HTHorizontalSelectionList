@@ -323,6 +323,7 @@ static NSString *ViewCellIdentifier = @"ViewCell";
     } else if ([self.dataSource respondsToSelector:@selector(selectionList:titleForItemWithIndex:)]) {
         NSString *title = [self.dataSource selectionList:self titleForItemWithIndex:indexPath.item];
 		CGSize size = [HTHorizontalSelectionListLabelCell sizeForTitle:title withFont:self.font];
+		size.height = collectionView.bounds.size.height;
 		NSInteger numberOfItems = [self.dataSource numberOfItemsInSelectionList:self];
 		if (!self.isScrollable) {
 			size.width = collectionView.bounds.size.width / numberOfItems;
