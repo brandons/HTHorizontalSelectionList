@@ -36,7 +36,8 @@ static NSString *ViewCellIdentifier = @"ViewCell";
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-
+		self.scrollable = YES;
+		
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         flowLayout.itemSize = CGSizeMake(100, 50);
@@ -320,17 +321,33 @@ static NSString *ViewCellIdentifier = @"ViewCell";
 
     } else if ([self.dataSource respondsToSelector:@selector(selectionList:titleForItemWithIndex:)]) {
         NSString *title = [self.dataSource selectionList:self titleForItemWithIndex:indexPath.item];
-        return [HTHorizontalSelectionListLabelCell sizeForTitle:title withFont:self.font];
+		CGSize size = [HTHorizontalSelectionListLabelCell sizeForTitle:title withFont:self.font];
+		NSInteger numberOfItems = [self.dataSource numberOfItemsInSelectionList:self];
+		if (!self.isScrollable) {
+			size.width = collectionView.bounds.size.width / numberOfItems;
+		}
+		return size;
     }
 
     return CGSizeZero;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
-                        layout:(UICollectionViewLayout *)collectionViewLayout
-        insetForSectionAtIndex:(NSInteger)section {
+						layout:(UICollectionViewLayout *)collectionViewLayout
+		insetForSectionAtIndex:(NSInteger)section {
+	
+	UIEdgeInsets insets = UIEdgeInsetsZero;
+	if (self.isScrollable) {
+		insets = self.buttonInsets;
+	}
+	return insets;
+}
 
-    return self.buttonInsets;
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+				   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+	return 0;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
