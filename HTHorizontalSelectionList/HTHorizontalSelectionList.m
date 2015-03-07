@@ -24,7 +24,7 @@
 
 #define kHTHorizontalSelectionListHorizontalMargin 20
 
-#define kHTHorizontalSelectionListSelectionIndicatorHeight 4
+#define kHTHorizontalSelectionListSelectionIndicatorHeight 3
 #define kHTHorizontalSelectionListTrimHeight 1
 
 static NSString *LabelCellIdentifier = @"LabelCell";
