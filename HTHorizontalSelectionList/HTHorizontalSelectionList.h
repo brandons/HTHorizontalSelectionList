@@ -12,16 +12,16 @@
 @protocol HTHorizontalSelectionListDelegate;
 
 typedef NS_ENUM(NSInteger, HTHorizontalSelectionIndicatorStyle) {
-    HTHorizontalSelectionIndicatorStyleBottomBar,           // Default
-    HTHorizontalSelectionIndicatorStyleButtonBorder,
-    HTHorizontalSelectionIndicatorStyleNone
+	HTHorizontalSelectionIndicatorStyleBottomBar,           // Default
+	HTHorizontalSelectionIndicatorStyleButtonBorder,
+	HTHorizontalSelectionIndicatorStyleNone
 };
 
 @interface HTHorizontalSelectionList : UIView
 
 @property (nonatomic) NSInteger selectedButtonIndex;        // returns selected button index. -1 if nothing selected
-                                                            // to animate this change, use `-setSelectedButtonIndex:animated:`
-                                                            // NOTE: this value will persist between calls to `-reloadData`
+															// to animate this change, use `-setSelectedButtonIndex:animated:`
+															// NOTE: this value will persist between calls to `-reloadData`
 
 @property (nonatomic, weak) id<HTHorizontalSelectionListDataSource> dataSource;
 @property (nonatomic, weak) id<HTHorizontalSelectionListDelegate> delegate;
@@ -32,13 +32,12 @@ typedef NS_ENUM(NSInteger, HTHorizontalSelectionIndicatorStyle) {
 
 @property (nonatomic, assign, getter=isScrollable) BOOL scrollable;                // Default is YES
 
-@property (nonatomic, strong) UIFont *font;
-
 @property (nonatomic) UIEdgeInsets buttonInsets;
 
 @property (nonatomic) HTHorizontalSelectionIndicatorStyle selectionIndicatorStyle;
 
 - (void)setTitleColor:(UIColor *)color forState:(UIControlState)state;
+- (void)setFont:(UIFont *)font forState:(UIControlState)state;
 
 - (void)reloadData;
 
