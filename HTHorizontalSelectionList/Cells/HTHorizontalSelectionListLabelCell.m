@@ -10,8 +10,6 @@
 
 @interface HTHorizontalSelectionListLabelCell ()
 
-@property (nonatomic, strong) UILabel *titleLabel;
-
 @property (nonatomic, strong) NSMutableDictionary *titleColorsByState;
 @property (nonatomic, strong) NSMutableDictionary *fontsByState;
 
