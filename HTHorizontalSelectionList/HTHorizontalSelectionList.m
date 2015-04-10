@@ -424,16 +424,18 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 	}
 }
 
-- (void)alignSelectionIndicatorWithCell:(UICollectionViewCell *)cell {
+- (void)alignSelectionIndicatorWithCell:(HTHorizontalSelectionListLabelCell *)cell {
 	NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:cell];
 	
 	if (selectedIndexPath) {
 		UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForItemAtIndexPath:selectedIndexPath];
 		CGRect cellRect = attributes.frame;
 		
-		self.selectionIndicatorBar.frame = CGRectMake(cellRect.origin.x,
+		CGSize textSize = [HTHorizontalSelectionListLabelCell sizeForTitle:cell.title withFont:cell.titleLabel.font];
+		
+		self.selectionIndicatorBar.frame = CGRectMake(cellRect.origin.x + cellRect.size.width/2 - textSize.width/2,
 													  self.contentView.frame.size.height - kHTHorizontalSelectionListSelectionIndicatorHeight,
-													  cellRect.size.width,
+													  textSize.width,
 													  kHTHorizontalSelectionListSelectionIndicatorHeight);
 	}
 }
