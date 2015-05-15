@@ -226,7 +226,7 @@ static NSString *ViewCellIdentifier = @"ViewCell";
 
 - (void)resetScrollPosition
 {
-	[self.collectionView scrollRectToVisible:CGRectZero animated:NO];
+	[self.collectionView setContentOffset:CGPointZero];
 }
 
 - (void)setSelectedButtonIndex:(NSInteger)selectedButtonIndex animated:(BOOL)animated {
