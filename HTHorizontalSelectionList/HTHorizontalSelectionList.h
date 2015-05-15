@@ -40,7 +40,7 @@ typedef NS_ENUM(NSInteger, HTHorizontalSelectionIndicatorStyle) {
 - (void)setFont:(UIFont *)font forState:(UIControlState)state;
 
 - (void)reloadData;
-
+- (void)resetScrollPosition;
 - (void)setSelectedButtonIndex:(NSInteger)selectedButtonIndex animated:(BOOL)animated;
 
 @end

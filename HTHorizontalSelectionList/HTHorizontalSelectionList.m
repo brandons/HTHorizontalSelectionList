@@ -224,6 +224,11 @@ static NSString *ViewCellIdentifier = @"ViewCell";
 	[self updateConstraintsIfNeeded];
 }
 
+- (void)resetScrollPosition
+{
+	[self.collectionView scrollRectToVisible:CGRectZero animated:NO];
+}
+
 - (void)setSelectedButtonIndex:(NSInteger)selectedButtonIndex animated:(BOOL)animated {
 	
 	NSInteger buttonCount = [self.dataSource numberOfItemsInSelectionList:self];
@@ -255,6 +260,8 @@ static NSString *ViewCellIdentifier = @"ViewCell";
 	if (selectedCell) {
 		[self.collectionView scrollRectToVisible:CGRectInset(selectedCell.frame, -kHTHorizontalSelectionListHorizontalMargin, 0)
 										animated:animated];
+	} else {
+		[self.collectionView scrollRectToVisible:CGRectZero animated:YES];
 	}
 }
 
